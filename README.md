@@ -17,7 +17,7 @@ Este projeto é um **Karaokê Online** que permite enviar arquivos de áudio ou 
 ---
 
 ## Estrutura do projeto
-
+```
 karaoke_online/
 │
 ├── backend/
@@ -33,7 +33,7 @@ karaoke_online/
 ├── spleeter-env/ # Virtual environment Python com Spleeter instalado
 ├── .gitignore
 └── README.md
-
+```
 
 ---
 
