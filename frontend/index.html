@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Karaokê Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    #player button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #audioPlayer {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Karaokê Inteligente 🎤</h1>
+  
+  <form id="uploadForm">
+    <input type="file" name="file" accept="audio/*,video/*" required>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div id="player" style="margin-top:20px; display:none;">
+    <h2>Escolha a faixa:</h2>
+    <button type="button" onclick="play('original')">Original</button>
+    <button type="button" onclick="play('vocals')">Só Voz</button>
+    <button type="button" onclick="play('instrumental')">Só Instrumental</button>
+    <br><br>
+    <audio id="audioPlayer" controls></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
