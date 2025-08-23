@@ -51,7 +51,7 @@ karaoke_online/
 1. Clone o repositório:
 
 ```bash
-git clone <URL_DO_REPO>
+git clone [<URL_DO_REPO>](https://github.com/infingardi/karaoke_online.git)
 cd karaoke_online
 ```
 2. Crie e ative o ambiente virtual Python:
