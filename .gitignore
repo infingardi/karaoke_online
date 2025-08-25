@@ -4,7 +4,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Build/output
+# Build 
 backend/output/
 backend/uploads/
 backend/pretrained_models/
