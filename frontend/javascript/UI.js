@@ -22,6 +22,7 @@ class UI {
             tracksSection: document.querySelector("#tracksSection"),
             tracksList: document.querySelector("#tracksList"),
             tracksHeader: document.querySelector("#tracksSection h3"),
+            toggleBtn: document.querySelector("#themeToggle")
         };
         this.tracksCollapsed = false;
         this.originalAudio = null;
@@ -74,6 +75,22 @@ class UI {
 
         // Original Track Button
         this.elements.playOriginalBtn.onclick = () => this.toggleOriginalTrack();
+
+        const root = document.documentElement;
+
+        if (localStorage.getItem("theme") === "light") {
+            root.classList.add("light");
+        }
+
+        this.elements.toggleBtn.addEventListener("click", () => {
+
+            root.classList.toggle("light");
+            if (root.classList.contains("light")) {
+                localStorage.setItem("theme", "light");
+            } else {
+                localStorage.setItem("theme", "dark");
+            }
+        });
     }
 
     initTracksHeader() {

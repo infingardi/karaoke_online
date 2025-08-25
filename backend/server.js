@@ -10,13 +10,9 @@ const PORT = 3000;
 // Caminho do Python do venv
 const pythonPath = path.join(__dirname, "..", "spleeter-env", "Scripts", "python.exe");
 
-// Configura upload
 const upload = multer({ dest: "uploads/" });
 
-// Servir frontend
 app.use(express.static(path.join(__dirname, "../frontend")));
-
-// Servir pastas públicas
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/output", express.static(path.join(__dirname, "output")));
 
@@ -78,9 +74,9 @@ app.get("/tracks", (req, res) => {
     const tracks = folders.map(folder => {
       const folderPath = path.join(outputDir, folder);
 
-      // Lê name.txt para pegar o nome original
       const namePath = path.join(folderPath, "name.txt");
-      let name = folder; // fallback
+      let name = folder;
+
       if (fs.existsSync(namePath)) {
         name = fs.readFileSync(namePath, "utf-8");
       }
