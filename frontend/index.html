@@ -1,46 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Karaokê Online</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f9f9f9;
-    }
-    h1, h2 {
-      color: #333;
-    }
-    #player button {
-      margin-right: 10px;
-      margin-bottom: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    #audioPlayer {
-      width: 100%;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Karaokê Inteligente 🎤</h1>
-  
-  <form id="uploadForm">
-    <input type="file" name="file" accept="audio/*,video/*" required>
-    <button type="submit">Enviar</button>
-  </form>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PlayAlong — pratique com as faixas separadas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="logo">🎵 <span>PlayAlong</span></div>
+      <nav class="top-actions">
+        <button id="themeToggle" class="ghost-btn" aria-label="Alternar tema">🌓</button>
+        <a class="ghost-btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
 
-  <div id="player" style="margin-top:20px; display:none;">
-    <h2>Escolha a faixa:</h2>
-    <button type="button" onclick="play('original')">Original</button>
-    <button type="button" onclick="play('vocals')">Só Voz</button>
-    <button type="button" onclick="play('instrumental')">Só Instrumental</button>
-    <br><br>
-    <audio id="audioPlayer" controls></audio>
-  </div>
+    <main class="container">
+      <section class="hero">
+        <h1>Pratique seu instrumento com faixas isoladas</h1>
+        <p>Envie uma música, silencie a voz ou um instrumento e toque junto.</p>
+      </section>
 
-  <script src="script.js"></script>
-</body>
+      <section class="uploader" id="dropzone" aria-label="Área de upload">
+        <input type="file" id="fileInput" accept="audio/*" hidden />
+        <div class="dz-content">
+          <div class="dz-icon">⬆️</div>
+          <div class="dz-text">
+            <strong>Arraste seu áudio aqui</strong> ou
+            <button id="browseBtn" class="primary-btn">Escolher arquivo</button>
+            <div class="dz-sub">MP3, WAV, M4A… até 20MB</div>
+          </div>
+        </div>
+      </section>
+
+        <div id="loadingLabel" class="loading-label hidden">
+        <div class="spinner"></div>
+        <span class="loading-text">Preparando…</span>
+      </div>
+
+      <section id="tracksSection" class="tracks-section hidden">
+        <h3>Músicas enviadas</h3>
+        <div id="tracksList" class="tracks-list">
+          <!-- preenchido via JS -->
+        </div>
+      </section>
+
+      <section id="playerSection" class="hidden player-grid">
+        <div class="player-card">
+          <div class="track-meta">
+            <div class="track-title" id="trackTitle">—</div>
+            <div class="track-time"><span id="currentTime">0:00</span> / <span id="totalTime">0:00</span></div>
+          </div>
+          <div class="controls">
+            <button id="playBtn" class="control-btn" aria-label="Play/Pause">▶️</button>
+            <button id="stopBtn" class="control-btn" aria-label="Stop">⏹️</button>
+            <label class="range-wrap" aria-label="Volume master">
+              <input id="masterVolume" type="range" min="0" max="1" step="0.01" value="0.9" />
+              <span>Volume</span>
+            </label>
+            <label class="range-wrap" aria-label="Velocidade">
+              <input id="playbackRate" type="range" min="0.5" max="1.5" step="0.01" value="1" />
+              <span>Velocidade</span>
+            </label>
+          </div>
+
+          <!-- Barra de progresso interativa -->
+          <div class="progress-wrap">
+            <input id="progressBar" type="range" min="0" max="100" step="0.1" value="0" />
+          </div>
+
+          <canvas id="waveform" height="70" aria-label="Forma de onda"></canvas>
+
+
+          <div class="original-track">
+            <button id="playOriginalBtn" class="primary-btn">▶️ Tocar faixa original</button>
+          </div>
+        </div>
+
+        <div class="stems">
+          <h3>Faixas</h3>
+          <div id="stemsList" class="stems-list">
+            <!-- preenchido via JS -->
+          </div>
+          <div class="hint">Dica: silencie a Voz para tocar e cantar, ou silencie Instrumental para praticar o instrumento.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div><strong>PlayAlong</strong></div>
+      <div class="tiny">DCC082 - Sistemas Multimídia / Autores: Igor Infingardi e Sávio Chermont</div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
 </html>
