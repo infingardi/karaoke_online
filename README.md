@@ -1,24 +1,35 @@
-# Karaokê Online Inteligente 🎤
+# PlayAlong 🎶
 
-Este projeto é um **Karaokê Online** que permite enviar arquivos de áudio ou vídeo e separar automaticamente a voz e a base instrumental utilizando o [Spleeter](https://github.com/deezer/spleeter). É feito com **Node.js** no backend e um frontend simples em HTML/JS.
+O **PlayAlong** é um sistema que permite separar automaticamente a **voz** do **instrumental** de músicas.  
+Ele foi pensado para **cantores** e **instrumentistas** que desejam praticar suas habilidades utilizando apenas a parte que desejam ouvir — seja acompanhando o instrumental ou ensaiando com a voz original.
 
----
+## Funcionalidades principais
 
-## Funcionalidades
+- Upload de arquivos de áudio (`.mp3`, `.wav`, etc.)
+- Separação automática em:
+  - **Voz**
+  - **Instrumental**
+- Player integrado com:
+  - Controle de volume por faixa
+  - Controle de playback e andamento
+  - Barra de progresso interativa
+  - Visualização em **waveform**
+- Histórico de músicas enviadas, podendo reutilizar arquivos anteriores.
 
-- Upload de arquivos de áudio ou vídeo (`.mp3`, `.wav`, etc.)
-- Separação automática de stems (voz e instrumental) usando Spleeter.
-- Reprodução das faixas:
-  - **Original**
-  - **Só Voz**
-  - **Só Instrumental**
-- Interface web simples com player de áudio integrado.
+## Tecnologias utilizadas
 
----
+- **Backend:** Node.js, Express, Multer, Python, Spleeter
+- **Frontend:** HTML, CSS, JavaScript (DOM APIs, Canvas, Web Audio API)
+
+## Documentação detalhada
+
+- [📌 Documentação do Backend](./backend/README_BACKEND.md)
+- [🎨 Documentação do Frontend](./frontend/README_FRONTEND.md)
 
 ## Estrutura do projeto
+
 ```
-karaoke_online/
+PlayAlong/
 │
 ├── backend/
 │ ├── server.js # Backend Node.js
@@ -28,14 +39,13 @@ karaoke_online/
 │
 ├── frontend/
 │ ├── index.html
-│ └── script.js
+│ ├── javascript/ # Scripts JS
+│ ├── styles/ # Arquivos de estilo CSS
 │
 ├── spleeter-env/ # Virtual environment Python com Spleeter instalado
 ├── .gitignore
 └── README.md
 ```
-
----
 
 ## Pré-requisitos
 
@@ -44,16 +54,15 @@ karaoke_online/
 - [Spleeter](https://github.com/deezer/spleeter)
 - Sistema operacional Windows (adaptar caminhos se for Linux/Mac)
 
----
-
 ## Instalação
 
 1. Clone o repositório:
 
 ```bash
 git clone [<URL_DO_REPO>]
-cd karaoke_online
+cd PlayAlong
 ```
+
 2. Crie e ative o ambiente virtual Python:
 
 ```bash
@@ -72,6 +81,7 @@ pip install spleeter
 ```
 
 4. Instale dependências Node.js:
+
 ```bash
 cd backend
 npm install express multer
@@ -93,7 +103,7 @@ spleeter-env\Scripts\activate  # Windows
 cd backend
 node server.js
 ```
+
 3. Abra o navegador e acesse:
 
 http://localhost:3000
-
